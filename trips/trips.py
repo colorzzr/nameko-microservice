@@ -22,3 +22,12 @@ class TripsService:
             "to": airport_to_id
         })
         return trip_id
+
+    # @rpc
+    # def get_trip_with_aid(self, airport_id):
+    #     trip_id = uuid.uuid4().hex
+    #     self.redis.hmset(trip_id, {
+    #         "from": airport_from_id,
+    #         "to": airport_to_id
+    #     })
+    #     return trip_id

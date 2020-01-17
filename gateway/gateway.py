@@ -10,10 +10,21 @@ class GatewayService:
     airports_rpc = RpcProxy('airports_service')
     trips_rpc = RpcProxy('trips_service')
 
+########################################################################################
+
     @http('GET', '/airport/<string:airport_id>')
     def get_airport(self, request, airport_id):
+        print("aaaaaaaaaaaaaaaaaaaaaaaaa")
         airport = self.airports_rpc.get(airport_id)
         return json.dumps({'airport': airport})
+
+
+    # # get the trips of target airport 
+    # @http('GET', '/airport/<string:airport_id>/trips')
+    # def get_airport(self, request, airport_id):
+    #     airport = self.airports_rpc.get(airport_id)
+    #     return json.dumps({'airport': airport})
+
 
     @http('POST', '/airport')
     def post_airport(self, request):
@@ -21,6 +32,8 @@ class GatewayService:
         airport_id = self.airports_rpc.create(data['airport'])
 
         return airport_id
+
+##########################################################################################
 
     @http('GET', '/trip/<string:trip_id>')
     def get_trip(self, request, trip_id):
